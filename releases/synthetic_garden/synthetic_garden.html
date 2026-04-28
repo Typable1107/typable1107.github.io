@@ -77,7 +77,7 @@
     /* ── RELEASE HEADER ── */
     .release-header {
       display: grid;
-      grid-template-columns: 400px 1fr;
+      grid-template-columns: 240px 1fr;
       gap: 3rem;
       align-items: start;
       padding: 2.5rem 0 3rem;
@@ -97,9 +97,7 @@
       letter-spacing: 0.08em;
       overflow: hidden;
     }
-    /* Replace placeholder with:
-       <img src="your-art.jpg" alt="Release Title" style="width:100%;height:100%;object-fit:cover"> */
-
+    
     .release-info { padding-top: 0.5rem; }
 
     .release-type {
@@ -166,17 +164,8 @@
 
     .bandcamp-embed {
       width: 100%;
-      /* Bandcamp embeds come in fixed widths — the wrapper scales them on mobile */
     }
 
-    /* ── HOW TO GET YOUR BANDCAMP EMBED CODE ──────────────────
-       1. Go to your release page on Bandcamp
-       2. Click the share/embed icon (arrow icon) below the player
-       3. Click "Embed this album" or "Embed this track"
-       4. Choose "Large" size for best appearance
-       5. Copy the <iframe> code
-       6. Replace the placeholder block below with your <iframe>
-       ──────────────────────────────────────────────────────── */
     .embed-placeholder {
       background: #1a1b2e;
       border: 1px dashed rgba(255,255,255,0.12);
@@ -263,7 +252,9 @@
 
   <!-- ── NAV ── -->
   <nav>
-    <div class="nav-name"><a href="index.html">TYPABLE STUDIOS</a></div>
+    <div class="nav-name">
+      <a href="index.html">TYPABLE STUDIOS</a>
+    </div>
     <ul class="nav-links">
       <li><a href="index.html#about">About</a></li>
       <li><a href="music.html" class="active">Music</a></li>
@@ -280,19 +271,15 @@
      <img src="cover.jpg" alt="Threshold Cover" style="width:100%;height:100%;object-fit:cover">
 </div>
     <div class="release-info">
-      <!-- Change to: Single / EP / Album / Collab -->
       <div class="release-type">EP</div>
-      <!-- Your release title -->
-      <div class="release-title">Threshold</div>
-      <div class="release-year">February 2026</div>
-      <p class="release-desc">Electronic album I made on Ableton Live, FL Studio, and the M8 Tracker. I started this album with the goal to make each track completely drum-less, but quickly abandoned that restriction when I bought Ableton.</p>
-      <p class="release-desc">Spatial Game was made on the M8 Tracker, Index of Refraction and Sentinel were made in FL studio. Headspace, Undiscovered, and Reanimation were made in Ableton Live.</p>
-      <p class="release-desc">All tracks were mastered in Ableton Live with Ozone 12.</p>
+      <div class="release-title">Synthetic Garden</div>
+      <div class="release-year">December 2026</div>
+      <p class="release-desc">This is my first official mini album/EP, and It's made entirely on the Dirtywave M8 Tracker.</p><p class="release-desc">Additional mixing and mastering donein Ableton Live 12.</p>
+      
+      
       <div class="release-links">
-        <!-- Add, remove, or change these links as needed -->
-        <a href="#">Bandcamp</a><a href="#">SoundCloud</a>
-        
-        
+        <a href="#">Bandcamp</a>
+        <a href="#">SoundCloud</a>
         <a href="#">YouTube</a>
       </div>
     </div>
@@ -301,8 +288,8 @@
   <!-- ── BANDCAMP PLAYER ── -->
   <div class="player-section">
     <div class="player-label">Listen</div>
-    <div class="bandcamp-embed">
-      <iframe src="threshold_files/a.htm" seamless="" style="border: 0; width: 90%; height: 340px;">&lt;a href="https://typable.bandcamp.com/album/threshold"&gt;Threshold by Typable&lt;/a&gt;</iframe>
+    <div class="bandcamp-embed" style="display: grid;align-items: center;justify-items: center;">
+      <iframe src="https://bandcamp.com/EmbeddedPlayer/album=2804386690/size=large/bgcol=ffffff/linkcol=0687f5/artwork=small/transparent=true/" seamless="" style="border: 0; width: 700px; height: 340px;"><a href="https://typable.bandcamp.com/album/synthetic-garden">Synthetic Garden by Typable</a></iframe>
     </div>
   </div>
   
@@ -315,7 +302,4 @@
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
-
-
-
 </body></html>
