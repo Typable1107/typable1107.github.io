@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Threshold — Typable Studios</title>
+  <link href="threshold_files/css2.css" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #0e0f1a;
+      --text:    #e8e4dc;
+      --muted:   #7a776f;
+      --cyan:    #5bbcd1;
+      --gold:    #c8973a;
+      --display: 'Unbounded', sans-serif;
+      --body:    'Syne', sans-serif;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: var(--body);
+      font-size: 16px;
+      line-height: 1.75;
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img { display: block; max-width: 100%; }
+
+    /* ── NAV ── */
+    nav {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      padding: 1.4rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .nav-name {
+      font-family: var(--display);
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: var(--gold);
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+      list-style: none;
+      font-size: 0.8rem;
+      letter-spacing: 0.04em;
+    }
+
+    .nav-links a { color: var(--muted); transition: color 0.15s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-links a.active { color: var(--text); }
+
+    /* ── BACK LINK ── */
+    .back {
+      display: inline-block;
+      margin: 2.5rem 0 0;
+      font-size: 0.78rem;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      border-bottom: 1px solid rgba(255,255,255,0.1);
+      padding-bottom: 1px;
+      transition: color 0.15s;
+    }
+    .back:hover { color: var(--text); }
+
+    /* ── RELEASE HEADER ── */
+    .release-header {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 3rem;
+      align-items: start;
+      padding: 2.5rem 0 3rem;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .release-cover {
+      width: 100%;
+      aspect-ratio: 1;
+      background: #1a1b2e;
+      border: 1px solid rgba(255,255,255,0.07);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.65rem;
+      color: rgba(255,255,255,0.2);
+      letter-spacing: 0.08em;
+      overflow: hidden;
+    }
+    /* Replace placeholder with:
+       <img src="your-art.jpg" alt="Release Title" style="width:100%;height:100%;object-fit:cover"> */
+
+    .release-info { padding-top: 0.5rem; }
+
+    .release-type {
+      font-size: 0.7rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--cyan);
+      margin-bottom: 0.6rem;
+    }
+
+    .release-title {
+      font-family: var(--display);
+      font-size: clamp(1.8rem, 4vw, 3rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.01em;
+      color: var(--text);
+      margin-bottom: 0.5rem;
+    }
+
+    .release-year {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-bottom: 1.8rem;
+    }
+
+    .release-desc {
+      font-size: 0.95rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 2rem;
+      max-width: 440px;
+    }
+
+    .release-links {
+      display: flex;
+      gap: 1.2rem;
+      flex-wrap: wrap;
+    }
+
+    .release-links a {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      color: var(--muted);
+      border-bottom: 1px solid rgba(255,255,255,0.12);
+      padding-bottom: 2px;
+      transition: color 0.15s;
+    }
+    .release-links a:hover { color: var(--text); }
+
+    /* ── BANDCAMP PLAYER ── */
+    .player-section {
+      padding: 3rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.07);
+    }
+
+    .player-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+
+    .bandcamp-embed {
+      width: 100%;
+      /* Bandcamp embeds come in fixed widths — the wrapper scales them on mobile */
+    }
+
+    /* ── HOW TO GET YOUR BANDCAMP EMBED CODE ──────────────────
+       1. Go to your release page on Bandcamp
+       2. Click the share/embed icon (arrow icon) below the player
+       3. Click "Embed this album" or "Embed this track"
+       4. Choose "Large" size for best appearance
+       5. Copy the <iframe> code
+       6. Replace the placeholder block below with your <iframe>
+       ──────────────────────────────────────────────────────── */
+    .embed-placeholder {
+      background: #1a1b2e;
+      border: 1px dashed rgba(255,255,255,0.12);
+      border-radius: 2px;
+      padding: 3rem 2rem;
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.85rem;
+      line-height: 1.8;
+    }
+
+    .embed-placeholder code {
+      display: block;
+      margin-top: 0.8rem;
+      font-size: 0.75rem;
+      color: var(--cyan);
+      letter-spacing: 0.04em;
+    }
+
+    /* ── TRACKLIST (optional) ── */
+    .tracklist-section {
+      padding: 3rem 0;
+    }
+
+    .tracklist-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.2rem;
+    }
+
+    .tracklist {
+      list-style: none;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    .tracklist li {
+      display: flex;
+      align-items: baseline;
+      gap: 1rem;
+      padding: 0.7rem 0;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      font-size: 0.9rem;
+    }
+
+    .track-num {
+      font-size: 0.72rem;
+      color: var(--muted);
+      width: 1.4rem;
+      flex-shrink: 0;
+      text-align: right;
+    }
+
+    .track-name { color: var(--text); }
+
+    .track-duration {
+      margin-left: auto;
+      font-size: 0.72rem;
+      color: var(--muted);
+    }
+
+    /* ── FOOTER ── */
+    footer {
+      padding: 2rem 0 3rem;
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.18);
+      border-top: 1px solid rgba(255,255,255,0.07);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      body { padding: 0 1.2rem; }
+      .nav-links { gap: 1.2rem; }
+      .release-header { grid-template-columns: 1fr; gap: 1.5rem; }
+      .release-cover { max-width: 240px; }
+      footer { flex-direction: column; gap: 0.4rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- ── NAV ── -->
+  <nav>
+    <div class="nav-name"><a href="index.html">TYPABLE STUDIOS</a></div>
+    <ul class="nav-links">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="music.html" class="active">Music</a></li>
+      <li><a href="index.html#gallery">Photos</a></li>
+      <li><a href="index.html#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <a class="back" href="music.html">← All releases</a>
+
+  <!-- ── RELEASE HEADER ── -->
+  <div class="release-header">
+    <div class="release-cover">
+     <img src="threshold_files/threshold_cover.jpg" alt="Threshold Cover" style="width:100%;height:100%;object-fit:cover">
+</div>
+    <div class="release-info">
+      <!-- Change to: Single / EP / Album / Collab -->
+      <div class="release-type">EP</div>
+      <!-- Your release title -->
+      <div class="release-title">Threshold</div>
+      <div class="release-year">February 2026</div>
+      <p class="release-desc">Electronic album I made on Ableton Live, 
+FL Studio, and the M8 Tracker.
+I started this album with the goal to make each track completely 
+drum-less, but quickly abandoned that restriction when I bought Ableton.</p><p class="release-desc">Spatial Game was made on the M8 Tracker, 
+Index of Refraction and Sentinel were made in FL studio.
+Headspace, Undiscovered, and Reanimation were made in Ableton Live.</p><p class="release-desc">All tracks were mastered in Ableton Live with Ozone 12.</p>
+      <div class="release-links">
+        <!-- Add, remove, or change these links as needed -->
+        <a href="#">Bandcamp</a><a href="#">SoundCloud</a>
+        
+        
+        <a href="#">YouTube</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── BANDCAMP PLAYER ── -->
+  <div class="player-section">
+    <div class="player-label">Listen</div>
+    <div class="bandcamp-embed">
+
+      <!-- REPLACE THIS BLOCK with your Bandcamp embed <iframe>.
+           To get it: go to your release on Bandcamp → share/embed icon
+           → "Embed this album" → choose Large → copy the iframe code. -->
+      <div class="embed-placeholder">
+        <iframe src="threshold_files/a.htm" seamless="" style="border: 0; width: 90%; height: 340px;">&lt;a href="https://typable.bandcamp.com/album/threshold"&gt;Threshold by Typable&lt;/a&gt;</iframe>
+      </div>
+
+    </div>
+  </div>
+
+  
+  
+
+  <!-- ── FOOTER ── -->
+  <footer>
+    <span>© <span id="year">2026</span> Typable Studios</span>
+    <span><a href="music.html" style="color:inherit;">← Back to music</a></span>
+  </footer>
+
+  <script>
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+
+
+
+</body></html>
